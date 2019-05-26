@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController) {
 
   }
-
+  ionViewWillEnter(){
+    let loading = this.loadingCtrl.create({
+      spinner: "bubbles",
+      content: "Please wait....",
+      duration: 4000
+    });
+    loading.present();
+  }
 }
