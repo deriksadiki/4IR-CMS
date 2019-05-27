@@ -28,7 +28,7 @@ export class IrMethodsProvider {
             var user = firebase.auth().currentUser;
             firebase
               .database()
-              .ref("Organizations/" + user.uid)
+              .ref("4IR_Hubs/" + user.uid)
               .set({
                 name: Orgname,
                 email: email,
