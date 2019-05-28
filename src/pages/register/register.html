@@ -14,33 +14,35 @@
 
 
 <ion-content padding>
-   
-  <input  [(ngModel)]="orgName"  type="text" placeholder="Organisation Name"/>
+
+  <input [(ngModel)]="orgName" type="text" placeholder="Organisation Name">
   <br>
-  <input  [(ngModel)]="cell"  type="number" placeholder="Tel number"/>
+  <input [(ngModel)]="cell" type="number" placeholder="Tel number">
   <br>
-  <input  [(ngModel)]="email"  type="email" placeholder="Organisation Email"/>
-    <br>
-    <input  [(ngModel)]="address"  type="text" placeholder="Organisation Address" (change)="setAddress($event)"/>
-    <br>
-    <input  [(ngModel)]="password"  type="password" placeholder="Password"/>
+  <input [(ngModel)]="email" type="email" placeholder="Organisation Email">
   <br>
-    <ion-list>
-        <ion-item>
-          <ion-label>Category</ion-label>
-          <ion-select [(ngModel)]="category">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+  <input [(ngModel)]="desc" type="desc" placeholder="Organisation desc">
+  <br>
+  <input [(ngModel)]="address" type="text" placeholder="Organisation Address" (change)="setAddress($event)">
+  <br>
+  <input [(ngModel)]="password" type="password" placeholder="Password">
+  <br>
+  <ion-list>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="category">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
 
-  <button class="submitBtn2" (click)="Reg()">
+  <button ion-button class="submitBtn2" (click)="Reg()">
     Submit
   </button>
 

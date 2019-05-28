@@ -24,7 +24,8 @@ export class RegisterPage {
   orgName;
   address;
   orgAddressObject;
-  cell
+  cell;
+  desc;
   constructor(public IRmethods :  IrMethodsProvider, public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,private _ngZone: NgZone) {
   }
 
@@ -33,7 +34,7 @@ export class RegisterPage {
   }
   //register method
   Reg(){
-    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName).then(()=>{
+    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName,this.desc).then(()=>{
       this.navCtrl.push(HomePage)
     })
   }
