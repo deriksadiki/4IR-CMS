@@ -19,24 +19,26 @@ export class HomePage implements OnInit {
   lng=27.9503;
   marker;
   showMultipleMarker;
+  items = new Array()
+  orgNames = new Array()
+  
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public IRmethods: IrMethodsProvider) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
-
       console.log(data);
-      // setTimeout(() => {
-      //   this.loading.dismiss()
-      // }, 2500);
+      setTimeout(() => {
+        var names = this.IRmethods.getOrgNames()
+        console.log(names);
+        this.storeOrgNames(names)
+        // this.loading.dismiss()
+      }, 2500);
     })
 
     setTimeout(() => {
       this.IRmethods.getCurrentLocation(this.lat , this.lng).then((radius:any)=>{
-       
         console.log(this.lat);
        console.log(this.lng);
-        console.log(radius);
-        
-     
+        console.log(radius);  
       })
       
     }, 5000);
@@ -57,6 +59,38 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.initMap()
   }
+
+  storeOrgNames(names){
+    this.orgNames = names;
+    console.log(this.orgNames);
+    
+  }
+
+  initializeItems() {
+    this.items = this.orgNames
+  }
+
+ getItems(ev) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        console.log(val);
+        
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    else if (val == "" ||val == null) {
+      this.items = [];
+    }
+    console.log(this.items);
+  }
+
 
 
   logOut() {
