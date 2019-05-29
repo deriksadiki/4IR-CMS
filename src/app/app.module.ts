@@ -8,12 +8,16 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { IrMethodsProvider } from '../providers/4-ir-methods/4-ir-methods';
 import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
+import { OrganizationProfilePage } from '../pages/organization-profile/organization-profile';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    LoginPage,
+    OrganizationProfilePage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { RegisterPage } from '../pages/register/register';
   entryComponents: [
     MyApp,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    LoginPage,
+    OrganizationProfilePage
   ],
   providers: [
     StatusBar,
