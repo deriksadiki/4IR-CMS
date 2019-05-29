@@ -24,7 +24,9 @@ export class RegisterPage {
   orgName;
   address;
   orgAddressObject;
-  cell
+  cell;
+  image ;
+  description;
   constructor(public IRmethods :  IrMethodsProvider, public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,private _ngZone: NgZone) {
   }
 
@@ -33,9 +35,21 @@ export class RegisterPage {
   }
   //register method
   Reg(){
-    this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName).then(()=>{
-      this.navCtrl.push(HomePage)
-    })
+
+    console.log(this.orgName);
+    console.log(this.cell);
+    console.log(this.address);
+    console.log(this.description);
+    console.log(this.email);
+    console.log(this.password);
+    console.log(this.category);
+    
+    
+    
+    
+    // this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName).then(()=>{
+    //   this.navCtrl.push(HomePage)
+    // })
   }
 
   //this method will automatically set the address(long,lat,region) from the address the user enters

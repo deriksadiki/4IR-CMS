@@ -15,33 +15,70 @@
 
 <ion-content padding>
    
-  <input  [(ngModel)]="orgName"  type="text" placeholder="Organisation Name"/>
-  <br>
-  <input  [(ngModel)]="cell"  type="number" placeholder="Tel number"/>
-  <br>
-  <input  [(ngModel)]="email"  type="email" placeholder="Organisation Email"/>
-    <br>
-    <input  [(ngModel)]="address"  type="text" placeholder="Organisation Address" (change)="setAddress($event)"/>
-    <br>
-    <input  [(ngModel)]="password"  type="password" placeholder="Password"/>
-  <br>
-    <ion-list>
-        <ion-item>
-          <ion-label>Category</ion-label>
-          <ion-select [(ngModel)]="category">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+  
 
 
-  <button class="submitBtn2" (click)="Reg()">
-    Submit
-  </button>
+
+  <div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>This is a simpleRegister to Register your Organisation</p>
+        </div>
+
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text"   [(ngModel)]="orgName"   class="form-control" placeholder="Organisation Name" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel"    [(ngModel)]="cell"  class="form-control" placeholder="Tel number" value=""/>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control"  [(ngModel)]="email"  placeholder="Organisation Email" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control"   [(ngModel)]="address"  placeholder="Organisation Address" value=""/>
+                    </div>
+                </div>
+
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input type="password"  [(ngModel)]="password"  class="form-control" placeholder="password" value=""/>
+                      </div>
+                      <div class="form-group">
+                          <input type="file"  [(ngModel)]="image" class="form-control" placeholder="Tel number" value=""/>
+                      </div>
+                  </div>
+  
+                  <div class="col-md-6">
+                      <div class="form-group" >
+                        <select  [(ngModel)]="category">
+                          <option value="volvo">Volvo</option>
+                          <option value="saab">Saab</option>
+                          <option value="mercedes">Mercedes</option>
+                          <option value="audi">Audi</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <textarea placeholder="write a description"   [(ngModel)]="description">
+                         
+                          </textarea>
+                      </div>
+                  </div>
+  
+                  </div>
+
+            <button type="button"  (click)="Reg()"  class="btnSubmit">Submit</button>
+        </div>
+    </div>
+</div>
 
 </ion-content>
