@@ -56,20 +56,45 @@
                       <div class="form-group">
                           <input type="file"  [(ngModel)]="image" class="form-control" placeholder="Tel number" value=""/>
                       </div>
+<<<<<<< HEAD
                       <div class="form-group">
                         <input type="file"  [(ngModel)]="image" class="form-control" placeholder="Tel number" value=""/>
                     </div>
                   </div>
+=======
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <ion-searchbar (ionInput)="getItems($event)" placeholder="Enter your services"></ion-searchbar>
+                        <ion-list>
+                          <ion-item *ngFor="let item of items"  (click)="selectedServices(item)">
+                            {{ item }}
+                          </ion-item>
+                        </ion-list>
+
+
+                    </div> -->
+
+
+                    <ion-list>
+                        <ion-item>
+                          <ion-label>Services </ion-label>
+                          <ion-select [(ngModel)]="category" multiple="true" cancelText="Nah" okText="Okay!">
+                            <ion-option value="Testing" selected="true">Testing</ion-option>
+                            <ion-option value="Rapid prototype">Rapid prototype</ion-option>
+                            <ion-option value="Consultation" selected="true">Consultation</ion-option>
+                            <ion-option value="Research">Research</ion-option>
+                            <ion-option value="Training">Training</ion-option>
+                            <ion-option value="Incubation">Incubation</ion-option>
+                            <ion-option value="pepperoni">Skill Development</ion-option>
+                           
+                          </ion-select>
+                        </ion-item>
+                      </ion-list>
+>>>>>>> 11948e8863a84fad1c7cc08ced3d46ae427726e3
   
                   <div class="col-md-6">
-                      <div class="form-group" >
-                        <select  [(ngModel)]="category">
-                          <option value="volvo">Volvo</option>
-                          <option value="saab">Saab</option>
-                          <option value="mercedes">Mercedes</option>
-                          <option value="audi">Audi</option>
-                        </select>
-                      </div>
+                      
                       <div class="form-group">
                         <textarea placeholder="write a description"   [(ngModel)]="description">
                          

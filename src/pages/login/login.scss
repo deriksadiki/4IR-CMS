@@ -1,3 +1,26 @@
 page-login {
 
+    .form-content{
+        width: 80%;
+       // border: 2px solid  #009975;
+        height: 500px;
+       
+    }
+
+    .form-group{
+        width:50%;
+        margin-left: 10%;
+        
+
+    }
+    .btnSubmit
+    {
+        border:none;
+        border-radius:1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #009975 ;
+        color: #fff;
+    }
 }

@@ -1,5 +1,5 @@
-import { Component,NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angular';
+import { Component, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IrMethodsProvider } from '../../providers/4-ir-methods/4-ir-methods';
 import { HomePage } from '../home/home';
 declare var google;
@@ -25,16 +25,26 @@ export class RegisterPage {
   address;
   orgAddressObject;
   cell;
-  image ;
+  image;
   description;
-  constructor(public IRmethods :  IrMethodsProvider, public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,private _ngZone: NgZone) {
+  items = new Array();
+  serviceArray = new Array();
+
+  HighEducationInstitution = ["Testing and Analysis", "Rapid prototype", "Consultation", "Reseach", "Applied Research"];
+
+  Library = ["Research ", "Training "];
+  constructor(public IRmethods: IrMethodsProvider, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private _ngZone: NgZone) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+
+
+    console.log(this.category);
+
   }
   //register method
-  Reg(){
+  Reg() {
 
     console.log(this.orgName);
     console.log(this.cell);
@@ -50,11 +60,11 @@ export class RegisterPage {
   }
 
   //this method will automatically set the address(long,lat,region) from the address the user enters
-  setAddress(event){
-    this.getcoo(this.address).then((data:any) =>{
+  setAddress(event) {
+    this.getcoo(this.address).then((data: any) => {
       this.orgAddressObject = data;
       console.log(this.orgAddressObject);
-    }, Error=>{
+    }, Error => {
       const alert = this.alertCtrl.create({
         subTitle: 'The address you have entered is invalid, please enter a valid address',
         buttons: [
@@ -75,7 +85,7 @@ export class RegisterPage {
     return new Promise((accpt, rej) => {
       this._ngZone.run(() => {
         let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function(results, status) {
+        geocoder.geocode({ address: address }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             var arr = results[0].address_components;
             var arr2 = arr[3];
@@ -89,10 +99,39 @@ export class RegisterPage {
             accpt(position);
           }
           else {
-           rej('')
+            rej('')
           }
         });
       });
     });
+  }
+
+
+  selectCategory() {
+   console.log(this.category);
+   
+
+  }
+
+
+  selectedServices(item) {
+    console.log(item);
+    this.serviceArray.push(item);
+    console.log(this.serviceArray);
+
+  }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 }
