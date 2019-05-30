@@ -14,14 +14,15 @@ declare var google;
 export class HomePage implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
   orgArray = new Array();
+  profileArr = new Array();
   lat = -26.2620;
   map;
-  lng=27.9503;
+  lng = 27.9503;
   marker;
   showMultipleMarker;
   items = new Array()
   orgNames = new Array()
-  
+
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public IRmethods: IrMethodsProvider) {
     this.IRmethods.getAllOrganizations().then((data: any) => {
       this.orgArray = data;
@@ -35,16 +36,16 @@ export class HomePage implements OnInit {
     })
 
     setTimeout(() => {
-      this.IRmethods.getCurrentLocation(this.lat , this.lng).then((radius:any)=>{
+      this.IRmethods.getCurrentLocation(this.lat, this.lng).then((radius: any) => {
         console.log(this.lat);
-       console.log(this.lng);
-        console.log(radius);  
+        console.log(this.lng);
+        console.log(radius);
       })
-      
+
     }, 5000);
-      
-    
-      
+
+  
+
   }
   ionViewWillEnter() {
     // let loading = this.loadingCtrl.create({
@@ -60,17 +61,17 @@ export class HomePage implements OnInit {
     this.initMap()
   }
 
-  storeOrgNames(names){
+  storeOrgNames(names) {
     this.orgNames = names;
     console.log(this.orgNames);
-    
+
   }
 
   initializeItems() {
     this.items = this.orgNames
   }
 
- getItems(ev) {
+  getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
 
@@ -81,11 +82,11 @@ export class HomePage implements OnInit {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         console.log(val);
-        
+
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-    else if (val == "" ||val == null) {
+    else if (val == "" || val == null) {
       this.items = [];
     }
     console.log(this.items);
@@ -101,7 +102,7 @@ export class HomePage implements OnInit {
     })
   }
   initMap() {
-console.log(this.lng)
+    console.log(this.lng)
     const options = {
       center: { lat: this.lat, lng: this.lng },
       zoom: 14,
@@ -128,7 +129,7 @@ console.log(this.lng)
   }
 
 
-  
+
   markers() {
     console.log(this.orgArray);
     for (let index = 0; index < this.orgArray.length; index++) {
@@ -145,8 +146,11 @@ console.log(this.lng)
     }
   }
 
-  GoToOrgProfile(){
-
+  GoToOrgProfile() {
     this.navCtrl.push(OrganizationProfilePage);
+  }
+
+  goToViewPage(){
+
   }
 }

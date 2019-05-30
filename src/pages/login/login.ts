@@ -25,41 +25,41 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   SignIn(email: string, password: string) {
-    // console.log(email, password)
-    // let loading = this.loadingCtrl.create({
-    //   spinner: 'bubbles',
-    //   content: 'Signing in...',
-    //   duration: 40000
-    // });
-    // loading.present();
-    // this.IrMethodsProvider.SignIn(email, password).then((user: any) => {
-    //   // console.log(user);
-    //   this.IrMethodsProvider.checkVerification().then((data: any) => {
-    //     if (data == 0) {
-    //       const alert = this.alertCtrl.create({
-    //         // title: "No Password",
-    //         subTitle: "We have sent you a verification mail, Please activate your account with the link in the mail",
-    //         buttons: ['OK'],
-    //         cssClass: 'myAlert',
-    //       });
-    //       loading.dismiss()
-    //       alert.present();
-    //     }
-    //     else if (data == 1) {
-    //       loading.dismiss()
-    //       this.navCtrl.setRoot(HomePage);
-    //     }
-    //   })
-    // }).catch((error) => {
-    //   const alert = this.alertCtrl.create({
-    //     // title: "No Password",
-    //     subTitle: error.message,
-    //     buttons: ['OK'],
-    //     cssClass: 'myAlert',
-    //   });
-    //   loading.dismiss()
-    //   alert.present();
-    // })
+    console.log(email, password)
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Signing in...',
+      duration: 40000
+    });
+    loading.present();
+    this.IrMethodsProvider.loginx(email, password).then((user: any) => {
+      // console.log(user);
+      this.IrMethodsProvider.checkVerification().then((data: any) => {
+        if (data == 0) {
+          const alert = this.alertCtrl.create({
+            // title: "No Password",
+            subTitle: "We have sent you a verification mail, Please activate your account with the link in the mail",
+            buttons: ['OK'],
+            // cssClass: 'myAlert',
+          });
+          loading.dismiss()
+          alert.present();
+        }
+        else if (data == 1) {
+          loading.dismiss()
+          this.navCtrl.setRoot(HomePage);
+        }
+      })
+    }).catch((error) => {
+      const alert = this.alertCtrl.create({
+        // title: "No Password",
+        subTitle: error.message,
+        buttons: ['OK'],
+        cssClass: 'myAlert',
+      });
+      loading.dismiss()
+      alert.present();
+    })
     this.navCtrl.push(HomePage)
   }
 

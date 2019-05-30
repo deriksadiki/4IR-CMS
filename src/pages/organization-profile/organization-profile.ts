@@ -16,8 +16,11 @@ declare var firebase;
 })
 export class OrganizationProfilePage {
   detailArray = new Array();
+
+  profileArr = new Array();
   constructor(public navCtrl: NavController, public navParams: NavParams,public IrMethodsProvider:IrMethodsProvider) {
-    this.IrMethodsProvider.getOrgProfile().then((data)=>{
+    this.IrMethodsProvider.getOrgProfile().then((data:any)=>{
+      this.profileArr=data
       console.log(data)
     })
   }

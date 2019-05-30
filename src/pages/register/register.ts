@@ -44,7 +44,7 @@ export class RegisterPage {
     console.log(this.password);
     console.log(this.category);
     
-     // this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName).then(()=>{
+    //  this.IRmethods.register(this.email, this.password,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city,this.cell,this.category, this.orgName).then(()=>{
     //   this.navCtrl.push(HomePage)
     // })
   }

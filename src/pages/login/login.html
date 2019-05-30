@@ -14,12 +14,12 @@
 
 
 <ion-content padding>
-  <input [(ngModel)]="email" type="text" placeholder="email">
+  <input  type="text" #email placeholder="email">
   <br>
-  <input [(ngModel)]="password" type="email" placeholder="password">
+  <input  type="email" #password placeholder="password">
 
   <button ion-button clear id="forgotPassword" (click)="forgotpassword()">Forgot Password</button>
 
   <button ion-button (click)="Signup()">SignUp</button>
-  <button ion-button (click)="SignIn()">Login</button>
+  <button ion-button (click)="SignIn(email.value,password.value)">Login</button>
 </ion-content>
