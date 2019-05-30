@@ -34,7 +34,7 @@ export class IrMethodsProvider {
     })
   }
 
-  register(email, psswrd, lat,long,region,cell,category, Orgname,desc){
+  register(email, psswrd, lat,long,region,cell,category, Orgname,desc, service , description, address){
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
@@ -57,6 +57,8 @@ export class IrMethodsProvider {
                 lat : lat,
                 region : region,
                 downloadurl: "assets/download.png",
+                service:[service],
+                address:address 
               });
               var user = firebase.auth().currentUser;
               user.sendEmailVerification().then(function () {
@@ -301,5 +303,21 @@ getOrgProfile(){
   });
 })
 }
+
+
+forgetPassword(email){
+
+  return new Promise((resolve, reject)=>{
+    firebase.auth().sendPasswordResetEmail(email) .then(()=> {
+      resolve();
+      } , (error)=>{
+        reject(error)
+  })
+    
+})
+
+}
+
+
 
 }

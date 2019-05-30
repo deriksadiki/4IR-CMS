@@ -14,12 +14,27 @@
 
 
 <ion-content padding>
-  <input [(ngModel)]="email" type="text" placeholder="email">
-  <br>
-  <input [(ngModel)]="password" type="email" placeholder="password">
+  
+<div class="container">
+    <div>
+      <div class="form-content">
 
-  <button ion-button clear id="forgotPassword" (click)="forgotpassword()">Forgot Password</button>
+        <div class="form-group">
+          <input type="text"   [(ngModel)]="email"   class="form-control" placeholder="email" value=""/>
+      </div>
 
-  <button ion-button (click)="Signup()">SignUp</button>
-  <button ion-button (click)="SignIn()">Login</button>
+
+      <div class="form-group">
+        <input type="text"    [(ngModel)]="password"   class="form-control" placeholder="password" value=""/>
+    </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="SignIn()"   class="btnSubmit">Login</button>
+    <button type="button"  (click)="Signup()" class="btnSubmit">Signup</button>
+
+    <button ion-button clear id="forgotPassword" (click)="forgotpassword()">Forgot Password</button>
+  </div>
+
+
 </ion-content>

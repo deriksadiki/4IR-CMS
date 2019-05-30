@@ -66,5 +66,53 @@ export class LoginPage {
   Signup(){
   this.navCtrl.push(RegisterPage)
   }
+
+  forgotpassword(){
+    const prompt = this.alertCtrl.create({
+      title: 'ForgetPassord',
+      message: "",
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Title'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data.email);
+
+            this.IrMethodsProvider.forgetPassword(data.name).then(()=>{
+
+              const alert = this.alertCtrl.create({
+                title: 'New Friend!',
+                subTitle: 'Please check your email to reset your password ',
+                buttons: ['OK']
+              });
+              alert.present();
+            }).catch((error)=>{
+              console.log(error.message);
+              
+              const alert = this.alertCtrl.create({
+              
+                subTitle: error.message,
+                buttons: ['OK']
+              });
+              alert.present();
+            })
+          }
+        }
+      ]
+    });
+    prompt.present();
+    
+  }
   
 }
